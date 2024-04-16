@@ -1,31 +1,80 @@
-import { Router } from "express"
+import { Router } from "express";
+import { body, param } from "express-validator";
+import {
+  createProduct,
+  getProducts,
+  getOneProduct,
+  updateProduct,
+  updateAvailability,
+  deleteProduct,
+} from "./handlers/product";
+import { handleInputErrors } from "./middleware";
 
-const router = Router()
+const router = Router();
 
 // Routing
-router.get('/', (req, res) => {
+router.get("/", getProducts);
 
-    res.json('get')
-})
+router.get(
+  "/:id",
+  param("id").isInt().withMessage("Invalid Id"),
+  // Middleware validator
+  handleInputErrors,
+  getOneProduct
+);
 
-router.post('/', (req, res) => {
+router.post(
+  "/",
 
-    res.json('post')
-})
+  // Validation
+  body("name").notEmpty().withMessage("The product name cannot be empty"),
+  body("price")
+    .isNumeric()
+    .withMessage("Invalid value")
+    .notEmpty()
+    .withMessage("The product price cannot be empty")
+    .custom((value) => value > 0)
+    .withMessage("Invalid value"),
 
-router.put('/', (req, res) => {
+  // Middleware validator
+  handleInputErrors,
 
-    res.json('put')
-})
+  createProduct
+);
 
-router.patch('/', (req, res) => {
+router.put(
+  "/:id",
+  param("id").isInt().withMessage("Invalid Id"),
+  body("name").notEmpty().withMessage("The product name cannot be empty"),
+  body("price")
+    .isNumeric()
+    .withMessage("Invalid value")
+    .notEmpty()
+    .withMessage("The product price cannot be empty")
+    .custom((value) => value > 0)
+    .withMessage("Invalid value"),
+  body("availability").isBoolean().withMessage("Product not avilable"),
 
-    res.json('patch')
-})
+  // Middleware validator
+  handleInputErrors,
 
-router.delete('/', (req, res) => {
+  updateProduct
+);
 
-    res.json('delete')
-})
+router.patch(
+  "/:id",
+  param("id").isInt().withMessage("Invalid Id"),
+  // Middleware validator
+  handleInputErrors,
+  updateAvailability
+);
 
-export default router
+router.delete(
+  "/:id",
+  param("id").isInt().withMessage("Invalid Id"),
+  // Middleware validator
+  handleInputErrors,
+  deleteProduct
+);
+
+export default router;
