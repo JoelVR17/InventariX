@@ -1,31 +1,44 @@
-import { Router } from "express"
+import { Router } from "express";
+import { body } from "express-validator";
+import { createProduct } from "./handlers/product";
+import { handleInputErrors } from "./middleware";
 
-const router = Router()
+const router = Router();
 
 // Routing
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
+  res.json("get");
+});
 
-    res.json('get')
-})
+router.post(
+  "/",
 
-router.post('/', (req, res) => {
+  // Validation
+  body("name").notEmpty().withMessage("The product name cannot be empty"),
+  body("price")
+    .isNumeric()
+    .withMessage("Invalid value")
+    .notEmpty()
+    .withMessage("The product price cannot be empty")
+    .custom((value) => value > 0)
+    .withMessage("Invalid value"),
 
-    res.json('post')
-})
+  // Middleware validator
+  handleInputErrors,
 
-router.put('/', (req, res) => {
+  createProduct
+);
 
-    res.json('put')
-})
+router.put("/", (req, res) => {
+  res.json("put");
+});
 
-router.patch('/', (req, res) => {
+router.patch("/", (req, res) => {
+  res.json("patch");
+});
 
-    res.json('patch')
-})
+router.delete("/", (req, res) => {
+  res.json("delete");
+});
 
-router.delete('/', (req, res) => {
-
-    res.json('delete')
-})
-
-export default router
+export default router;
