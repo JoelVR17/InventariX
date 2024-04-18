@@ -4,13 +4,20 @@
   "description": "REST API with Express, Typescript & PostgresSQL",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "test": "jest --detectOpenHandles",
+    "pretest": "ts-node ./src/data --clear"
   },
   "author": "JoelVR",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
