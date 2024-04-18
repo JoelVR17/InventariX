@@ -4,7 +4,7 @@ import db from "./config/db";
 import colors from "colors";
 
 // Connect to DB
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
     await db.authenticate();
     db.sync();
