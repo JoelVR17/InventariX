@@ -24,12 +24,19 @@ This project aims to develop a basic product management application using the PE
 
 The technologies used below:
 
-* [![React][React.js]]
-* [![Typescript][Typescript]]
+<div align="center">
+    <h3>Languages and Tools</h3>
+    <div>
+        <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" alt="iconTech" width="50" height="50">&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg" alt="iconTech" width="50" height="50">&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-original-wordmark.svg" alt="iconTech" width="50" height="50">&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/express/express-original-wordmark.svg" alt="iconTech" width="50" height="50">&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" alt="iconTech" width="50" height="50">&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/postgresql/postgresql-original-wordmark.svg" alt="iconTech" width="50" height="50">&nbsp;
+    </div>
+</div>
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
