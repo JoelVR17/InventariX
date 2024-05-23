@@ -11,7 +11,7 @@
     A basic CRUD with PERN
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://inventary-x-frontend-dclt035p2-joelvr17s-projects.vercel.app">View Demo</a>
   </p>
 </div>
 
