@@ -1,5 +1,5 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { getProducts } from "../services/ProductService";
+import { ActionFunctionArgs, Link, useLoaderData } from "react-router-dom";
+import { getProducts, updateAvailability } from "../services/ProductService";
 import ProductDetails from "../components/ProductDetails";
 import { Product } from "../types";
 
@@ -7,6 +7,12 @@ export const loader = async () => {
   const products = await getProducts();
 
   return products || [];
+};
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const data = Object.fromEntries(await request.formData());
+  await updateAvailability(+data.id);
+  return {};
 };
 
 const Products = () => {
@@ -28,10 +34,10 @@ const Products = () => {
         <table className="w-full mt-5 table-auto">
           <thead className="bg-slate-800 text-white">
             <tr>
-              <th className="p-2">Producto</th>
-              <th className="p-2">Precio</th>
-              <th className="p-2">Disponibilidad</th>
-              <th className="p-2">Acciones</th>
+              <th className="p-2">Product</th>
+              <th className="p-2">Price</th>
+              <th className="p-2">Availability</th>
+              <th className="p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
