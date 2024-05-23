@@ -8,13 +8,8 @@ import {
   useLoaderData,
 } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
-import {
-  addProduct,
-  getProductById,
-  updateProduct,
-} from "../services/ProductService";
+import { getProductById, updateProduct } from "../services/ProductService";
 import { Product } from "../types";
-import { param } from "express-validator";
 import ProductForm from "../components/ProductForm";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
